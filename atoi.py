@@ -16,3 +16,29 @@
 
 # Input: "42"
 # Output: 42
+
+def atoi(strNum):
+    strNum = strNum.strip()
+    sign = 1
+    if not strNum:
+        return 0
+    elif strNum[0] in ["-", "+"]:
+        if strNum[0] == "-":
+            sign = -1
+        strNum = strNum[1:]
+    num = 0
+    for char in strNum:
+        if char.isdigit():
+            num = num * 10 + int(char)
+        else:
+            break
+    num *= sign
+    if num > 2147483647:
+        return 2147483647
+    elif num < -2147483648:
+        return -2147483648
+    return num
+
+num = "-105"
+ans = atoi(num)
+print(ans, type(ans))

@@ -9,3 +9,25 @@
 # Because nums[0] + nums[1] = 2 + 7 = 9,
 # return [0, 1].
 
+def two_sum(nums, target):
+    d = {}
+    for index in range(len(nums)):
+        if target - nums[index] in d:
+            return [d[target - nums[index]], index]
+        d[nums[index]] = index
+    return []
+
+nums = [2, 7, 11, 15]
+target = 9
+
+print(two_sum(nums, target))
+
+nums = [-2, 8, 11, 15]
+target = 9
+
+print(two_sum(nums, target))
+
+nums = [2, 7, 11, 15]
+target = 9
+
+print(two_sum(nums, target))
