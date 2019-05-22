@@ -1,3 +1,24 @@
+class ListNode:
+    def __init__(self, x, nextNode=None):
+        self.val = x
+        self.next = nextNode
+    
+    def asInt(self):
+        nextNode = self.next
+        total = str(self.val)
+        while nextNode:
+            total = str(nextNode.val) + total
+            nextNode = nextNode.next
+        return int(total)
+
+    def __str__(self):
+        s = "->" + str(self.val)
+        nextNode = self.next
+        while nextNode:
+            s += "->" + str(nextNode.val)
+            nextNode = nextNode.next
+        return s
+
 class Node(object):
     def __init__(self, value=None, next_node=None):
         self.value = value
