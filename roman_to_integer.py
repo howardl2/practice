@@ -39,3 +39,60 @@
 # Input: "MCMXCIV"
 # Output: 1994
 # Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+def roman_to_integer(s):
+    values = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000,
+        "IV": 4,
+        "IX": 9,
+        "XL": 40,
+        "XC": 90,
+        "CD": 400,
+        "CM": 900
+    }
+
+    prev = ""
+    ret = 0
+    for roman in s:
+        if prev + roman in values and prev != "":
+            ret -= values[prev]
+            # print(prev+roman)
+            ret += values[prev+roman]
+            prev = ""
+        else:
+            # print(roman)
+            ret += values[roman]
+            prev = roman
+    return ret
+
+def roman_to_integer_no_transition(s):
+    values = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+
+    ret = 0
+    for index in range(len(s) - 1):
+        if values[s[index]] < values[s[index+1]]:
+            ret -= values[s[index]]
+        else:
+            ret += values[s[index]]
+    return ret + values[s[-1]]
+
+print(roman_to_integer("IV") == 4)
+print(roman_to_integer("XIII") == 13)
+
+print(roman_to_integer_no_transition("IV") == 4)
+print(roman_to_integer_no_transition("XIII") == 13)
+print(roman_to_integer_no_transition("C") == 100)
