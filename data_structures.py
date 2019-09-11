@@ -1,4 +1,5 @@
 class ListNode:
+    """A linked list as represented on LeetCode"""
     def __init__(self, x, nextNode=None):
         self.val = x
         self.next = nextNode
@@ -44,3 +45,13 @@ class LinkedList(object):
             s += "->" + str(nextNode.value)
             nextNode = nextNode.next
         return s
+
+
+
+
+class DirectedGraphNode(object):
+    """Represent a directed graph"""
+    def __init__(self, value, edges_in=[], edges_out=[]):
+        self.edges_in = edges_in
+        self.edges_out = edges_out
+        self.value = value
